@@ -32,6 +32,10 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r liked-tweets-requirements.txt
         
+      - name: Filesize
+        run: |-
+          stat --printf="%s" liked-tweets.db
+          
       - name: Deploy Datasette using Vercel
         env:
           NOW_TOKEN: ${{ secrets.NOW_TOKEN }}
